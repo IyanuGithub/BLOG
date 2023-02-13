@@ -1,0 +1,25 @@
+Journal Api
+
+Register User - Model(email, name, password)
+1. Email, password, validation
+2. hash users password (mongoose middleware)
+3. generate token ( mongoose instance method)
+4. Send response with the token
+
+Login users
+1. Email and password validation
+2. find user
+3. compare password( if correct -> generate token)
+generating proper jwt secret
+allkeysgenerator.com
+
+Authentication middleware
+Authorization: Bearer token - req.headers
+1. get token from req.headers
+2. verify token
+
+Error handling
+
+CRUD OPERATION for Journal
+1. schema connection
+2. crud
