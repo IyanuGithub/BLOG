@@ -23,3 +23,9 @@ Error handling
 CRUD OPERATION for Journal
 1. schema connection
 2. crud
+
+added things
+//allow update to user information
+handling errors for job schema
+
+// committing github

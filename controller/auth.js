@@ -1,4 +1,5 @@
 const Users = require('../models/user')
+const errorHandler = require ('../utils/handleerror')
 
 
 const register = async (req, res) => {
@@ -11,8 +12,8 @@ try {
     const token = user.generateToken()
     res.status(201).json({ data:{name: user.name, email: user.email}, token})
   } catch (error) {
-    console.log(error);
-    res.json({error})
+    const  errors = errorHandler(error)
+    res.status(400).json({errors})
   }
 }
 
@@ -28,11 +29,11 @@ const login = async (req, res) => {
     try {
        const user = await Users.findOne({ email})
        if(!user) {
-        return res.status(400).json({success: false})
+        throw Error('incorrect Email')
        } 
        const authenticated = await user.comparePassword(password)
        if(!authenticated) {
-        return res.status(400).json({ success: false})
+        throw Error('incorrect Password')
        }
        const token = user.generateToken();
        res.status(200).json({user:{name: user.name, email: user.email}, token})
